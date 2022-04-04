@@ -11,7 +11,7 @@ pipeline {
         stage ('build & push') {
         agent { label 'master' }
             steps {
-                sh '/usr/local/apache-maven-3.8.4/bin/mvn clean package'
+                sh '/usr/local/apache-maven-3.8.5/bin/mvn clean package'
                 sh 'ansible-playbook -i hosts dockerimage.yml .' 
             }
         }
