@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: prod
+  strategy: 
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: tomcat server
+      labels:
+        env: prod
+    spec:
+      containers:
+        - name: tomcat
+          image: manojkumarpolaka/simple-devops-image
+          imagePullPolicy: Always
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+
+
