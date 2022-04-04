@@ -4,7 +4,7 @@ pipeline {
         stage ('checkout scm') {
             agent { label 'master' }
             steps {
-                checkout(scm)
+                git url: 'https://github.com/Manojkumarpolaka/webapp.git', branch: "master"
             }
         }
 
